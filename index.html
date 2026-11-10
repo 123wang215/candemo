@@ -673,6 +673,34 @@
       font-variant-numeric: tabular-nums;
     }
 
+    .policy-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .policy-stat {
+      padding: 10px;
+      border-radius: 7px;
+      background: var(--slate-soft);
+    }
+
+    .policy-stat strong {
+      display: block;
+      color: var(--teal);
+      font-size: 19px;
+      line-height: 1.1;
+    }
+
+    .policy-stat span {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 9px;
+      line-height: 1.4;
+    }
+
     .course-credits {
       margin: 5px 0 0;
       color: var(--amber);
@@ -864,7 +892,7 @@
 
     .matrix {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(5, 1fr);
       gap: 2px;
       margin: 10px 0;
     }
@@ -872,23 +900,27 @@
     .cell {
       position: relative;
       display: grid;
-      min-height: 54px;
+      min-height: 42px;
       place-items: center;
       background: var(--teal-soft);
     }
 
-    .cell.amber {
+    .cell.medium {
       background: var(--amber-soft);
     }
 
-    .cell.red {
+    .cell.high {
+      background: #fed7aa;
+    }
+
+    .cell.extreme {
       background: var(--red-soft);
     }
 
     .risk-dot {
       display: grid;
-      width: 24px;
-      height: 24px;
+      width: 21px;
+      height: 21px;
       place-items: center;
       border: 2px solid #fff;
       border-radius: 50%;
@@ -907,6 +939,45 @@
       color: var(--muted);
       font-size: 9px;
       line-height: 1.45;
+    }
+
+    .matrix-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 8px;
+    }
+
+    .matrix-legend span {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .matrix-legend i {
+      width: 8px;
+      height: 8px;
+      border-radius: 2px;
+      background: var(--teal-soft);
+    }
+
+    .matrix-legend .medium {
+      background: var(--amber-soft);
+    }
+
+    .matrix-legend .high {
+      background: #fed7aa;
+    }
+
+    .matrix-legend .extreme {
+      background: var(--red-soft);
+    }
+
+    .dot-stack {
+      display: flex;
+      gap: 2px;
     }
 
     .risk-list {
@@ -967,6 +1038,28 @@
       margin: 6px 0 0;
       color: var(--faint);
       font-size: 9px;
+    }
+
+    .risk-meta {
+      display: grid;
+      gap: 4px;
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px solid var(--border);
+    }
+
+    .risk-meta div {
+      display: grid;
+      grid-template-columns: 34px 1fr;
+      gap: 6px;
+      color: var(--muted);
+      font-size: 9px;
+      line-height: 1.4;
+    }
+
+    .risk-meta strong {
+      color: var(--text);
+      font-weight: 600;
     }
 
     .report-summary {
@@ -1304,6 +1397,22 @@
           </div>
         </section>
 
+        <section class="card section-card" aria-labelledby="policy-title">
+          <div class="section-head">
+            <h2 class="section-title" id="policy-title">政策窗口与供给压力</h2>
+            <span class="tag">三重叠加</span>
+          </div>
+          <div class="policy-grid">
+            <div class="policy-stat"><strong>20%</strong><span>2023年专业布点优化目标已如期实现，调整进入常态化阶段。</span></div>
+            <div class="policy-stat"><strong>13所 / 16所</strong><span>市场营销在本科拟撤销和停招名单中均居首位。</span></div>
+          </div>
+          <div class="insight-list">
+            <div class="insight">“十五五”规划明确就业红黄牌，并将就业状况与招生计划、专业设置挂钩。</div>
+            <div class="insight">“人工智能+消费”、直播电商和数字化营销被写入扩大消费规划。</div>
+            <div class="insight warn">工商管理类毕业半年后月收入6120元，低于全国本科均值6435元。</div>
+          </div>
+        </section>
+
         <aside class="note">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 3 2.5 20h19L12 3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
           <span>12条岗位为目的性抽样，不代表全国市场总体。</span>
@@ -1516,22 +1625,103 @@
           </button>
         </header>
         <section class="card risk-matrix" aria-labelledby="matrix-title">
-          <h2 class="section-title" id="matrix-title">风险初筛</h2>
+          <h2 class="section-title" id="matrix-title">正式风险矩阵</h2>
           <div class="matrix-head"><span>影响程度 ↑</span><span>发生可能性 →</span></div>
           <div class="matrix" aria-label="风险矩阵">
-            <div class="cell amber"></div><div class="cell red"></div><div class="cell red"><span class="risk-dot red">2</span></div>
-            <div class="cell"></div><div class="cell amber"><span class="risk-dot">4</span></div><div class="cell amber"><span class="risk-dot">1</span></div>
-            <div class="cell"></div><div class="cell"></div><div class="cell amber"></div>
+            <div class="cell"></div><div class="cell"></div><div class="cell medium"></div><div class="cell high"></div><div class="cell extreme"></div>
+            <div class="cell"></div><div class="cell medium"></div><div class="cell high"><div class="dot-stack"><span class="risk-dot">3</span><span class="risk-dot">5</span></div></div><div class="cell extreme"><div class="dot-stack"><span class="risk-dot red">1</span><span class="risk-dot red">4</span></div></div><div class="cell extreme"></div>
+            <div class="cell"></div><div class="cell"></div><div class="cell medium"><span class="risk-dot">2</span></div><div class="cell high"><span class="risk-dot red">6</span></div><div class="cell high"></div>
+            <div class="cell"></div><div class="cell"></div><div class="cell medium"></div><div class="cell medium"></div><div class="cell medium"></div>
+            <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell medium"></div><div class="cell medium"></div>
           </div>
-          <p class="risk-caption">概率与影响分级为初筛意见，待社会学B补充正式风险矩阵。</p>
+          <div class="matrix-legend">
+            <span><i></i>低</span><span><i class="medium"></i>中</span><span><i class="high"></i>高</span><span><i class="extreme"></i>极高</span>
+          </div>
+          <p class="risk-caption">评分采用可能性×影响程度；各项责任主体、时间节点和预警指标已补齐。</p>
         </section>
         <div class="risk-list">
-          <article class="card risk-card"><span class="risk-number">1</span><div class="risk-content"><div class="risk-topline"><h2 class="risk-title">招聘样本代表性不足</h2><span class="tag warn">高可能 · 中影响</span></div><p class="risk-response">扩样至100—300条，按城市、行业和岗位方向分层。</p><p class="risk-pending">责任主体 · 预警指标 · 时间节点待补</p></div></article>
-          <article class="card risk-card"><span class="risk-number red">2</span><div class="risk-content"><div class="risk-topline"><h2 class="risk-title">专业历年就业数据缺失</h2><span class="tag risk">高可能 · 高影响</span></div><p class="risk-response">补充2019—2025届就业率、岗位、起薪和毕业生人数。</p><p class="risk-pending">责任主体 · 预警指标 · 时间节点待补</p></div></article>
-          <article class="card risk-card"><span class="risk-number red">3</span><div class="risk-content"><div class="risk-topline"><h2 class="risk-title">预测参数依赖主观假设</h2><span class="tag risk">中可能 · 高影响</span></div><p class="risk-response">开展保守、基准、乐观敏感性分析，并由A复核参数。</p><p class="risk-pending">责任主体 · 预警指标 · 时间节点待补</p></div></article>
-          <article class="card risk-card"><span class="risk-number">4</span><div class="risk-content"><div class="risk-topline"><h2 class="risk-title">新增技术课学习适应风险</h2><span class="tag warn">中可能 · 中影响</span></div><p class="risk-response">设置先修诊断、Python/R桥接辅导和挂科率预警，动态调整教学难度。</p><p class="risk-pending">责任主体 · 预警指标 · 时间节点待补</p></div></article>
+          <article class="card risk-card">
+            <span class="risk-number red">1</span>
+            <div class="risk-content">
+              <div class="risk-topline"><h2 class="risk-title">师资结构性短板</h2><span class="tag risk">极高</span></div>
+              <p class="risk-response">内培、外引与课程降阶并行，优先保障新增数智课程主讲教师。</p>
+              <div class="risk-meta">
+                <div><strong>责任</strong><span>商学院 / 人事处 / 教务处</span></div>
+                <div><strong>节点</strong><span>方案批准后6个月完成首轮轮训</span></div>
+                <div><strong>预警</strong><span>新课开课率≥90%，课程评教≥4.0</span></div>
+              </div>
+            </div>
+          </article>
+          <article class="card risk-card">
+            <span class="risk-number">2</span>
+            <div class="risk-content">
+              <div class="risk-topline"><h2 class="risk-title">学生适应度与学业成效</h2><span class="tag warn">中</span></div>
+              <p class="risk-response">先修诊断、Python/R桥接辅导、Q值分流与就业观引导同步实施。</p>
+              <div class="risk-meta">
+                <div><strong>责任</strong><span>商学院 / 教务处 / 招办</span></div>
+                <div><strong>节点</strong><span>第1学期第1周完成先修诊断</span></div>
+                <div><strong>预警</strong><span>挂科率涨幅≤5个百分点，转出率≤8%</span></div>
+              </div>
+            </div>
+          </article>
+          <article class="card risk-card">
+            <span class="risk-number red">3</span>
+            <div class="risk-content">
+              <div class="risk-topline"><h2 class="risk-title">资源投入冲突</h2><span class="tag risk">高</span></div>
+              <p class="risk-response">分阶段投入，校企成本共担，并争取专项经费与产教融合项目。</p>
+              <div class="risk-meta">
+                <div><strong>责任</strong><span>分管校领导 / 财务处 / 教务处 / 商学院 / 合作企业</span></div>
+                <div><strong>节点</strong><span>实施前1学期完成三年投入规划</span></div>
+                <div><strong>预警</strong><span>经费到位率≥80%，实践岗位生均覆盖率≥50%</span></div>
+              </div>
+            </div>
+          </article>
+          <article class="card risk-card">
+            <span class="risk-number red">4</span>
+            <div class="risk-content">
+              <div class="risk-topline"><h2 class="risk-title">数据基础薄弱</h2><span class="tag risk">极高</span></div>
+              <p class="risk-response">扩样至100—300条，补齐2019—2025届数据，并显性披露数据缺口。</p>
+              <div class="risk-meta">
+                <div><strong>责任</strong><span>数据组（郭源源）/ 就业中心 / 校友办 / 教务处</span></div>
+                <div><strong>节点</strong><span>第2学期末样本量≥100条</span></div>
+                <div><strong>预警</strong><span>历史数据完整率≥80%，行业与城市覆盖各≥3类</span></div>
+              </div>
+            </div>
+          </article>
+          <article class="card risk-card">
+            <span class="risk-number red">5</span>
+            <div class="risk-content">
+              <div class="risk-topline"><h2 class="risk-title">预测参数主观性</h2><span class="tag risk">高</span></div>
+              <p class="risk-response">只报三情景区间，不报单一确定值；参数年度复核并做预测回测。</p>
+              <div class="risk-meta">
+                <div><strong>责任</strong><span>模型组（郭源源）/ 教务处 / 学院教学委员会</span></div>
+                <div><strong>节点</strong><span>每学年9月完成参数复核与回测</span></div>
+                <div><strong>预警</strong><span>回测误差≤1.5个百分点，区间表述覆盖率100%</span></div>
+              </div>
+            </div>
+          </article>
+          <article class="card risk-card">
+            <span class="risk-number red">6</span>
+            <div class="risk-content">
+              <div class="risk-topline"><h2 class="risk-title">技术迭代导致方案过时</h2><span class="tag risk">高</span></div>
+              <p class="risk-response">课程分为稳定层与敏捷层，以微专业和年度体检持续更新内容。</p>
+              <div class="risk-meta">
+                <div><strong>责任</strong><span>商学院教学委员会 / 系统运维团队</span></div>
+                <div><strong>节点</strong><span>每年6月完成敏捷层内容刷新</span></div>
+                <div><strong>预警</strong><span>敏捷层课程年更新率100%，技能匹配度止跌</span></div>
+              </div>
+            </div>
+          </article>
         </div>
-        <aside class="missing-card"><strong>正式风险责任矩阵待补充</strong><p>当前仅识别数据与模型风险，不能编造责任人或具体发生概率。</p></aside>
+        <aside class="card section-card">
+          <h2 class="section-title">风险监测闭环</h2>
+          <div class="insight-list">
+            <div class="insight">监测：季度更新招聘侧指标，年度更新就业侧指标。</div>
+            <div class="insight warn">预警：越界自动生成风险工单，并区分普通风险与数据缺口。</div>
+            <div class="insight">处置：院级会商、校级专项、暂停招生程序三级响应。</div>
+            <div class="insight">复核：每年9月回测预警处置效果，并滚动修正风险评分。</div>
+          </div>
+        </aside>
         <button class="primary-button" type="button" data-go="report">查看分析报告</button>
       </section>
 
@@ -1544,14 +1734,16 @@
         </header>
         <section class="report-summary">
           <h2>市场营销专业动态适配分析摘要</h2>
-          <p>12条岗位样本形成19类技能。数据分析与复盘覆盖率83.3%，技术课程较全但主要列为选修。</p>
+          <p>政策要求、产业需求与供给压力形成三重叠加。数据分析与复盘覆盖83.3%，专业调整具备明确政策窗口。</p>
           <span class="tag">数据可复核</span>
         </section>
         <div class="report-sections">
+          <section class="card report-section"><h3>政策背景</h3><p>20%专业布点优化目标已实现；“十五五”规划将就业状况与专业设置、招生计划直接挂钩。</p></section>
           <section class="card report-section"><h3>核心发现</h3><p>沟通协作覆盖率100%，数据分析与复盘83.3%，品牌策略与传播75.0%。</p></section>
           <section class="card report-section warn"><h3>培养方案差距</h3><p>技术课程模块较全，但商业文案、平台运营、投放归因和ROI未明确呈现。</p></section>
           <section class="card report-section"><h3>效果预测</h3><p>2030年基准情景：就业率87.9%升至89.9%，起薪8,441元升至8,779元。</p></section>
-          <section class="card report-section risk"><h3>数据缺口</h3><p>缺少专业历年就业与招生数据、绝对供需差额、正式风险责任矩阵和更大规模招聘样本。</p></section>
+          <section class="card report-section risk"><h3>风险结论</h3><p>形成6项正式风险矩阵，其中师资短板和数据基础薄弱为极高风险，均已明确责任主体、节点和预警指标。</p></section>
+          <section class="card report-section risk"><h3>剩余数据缺口</h3><p>仍缺少专业历年就业与招生数据、绝对供需差额和更大规模分层招聘样本。</p></section>
         </div>
         <section class="card section-card">
           <h2 class="section-title">数据来源</h2>
@@ -1559,7 +1751,8 @@
             <div class="source">招聘岗位样本：12条，2025-09至2026-11</div>
             <div class="source">培养方案：中央财经大学2026级市场营销</div>
             <div class="source">预测模型：2027—2030三情景假设</div>
-            <div class="source warn">来源明细：岗位链接、政策与宏观数据</div>
+            <div class="source">宏观政策：教高〔2023〕1号、国发〔2026〕16号、国发〔2026〕19号</div>
+            <div class="source warn">风险矩阵：6项风险、责任主体、时间节点与预警指标</div>
           </div>
         </section>
         <div class="button-stack">
@@ -1601,6 +1794,8 @@
         <p>招聘样本：12条市场营销相关校招岗位，时间范围2025年9月至2026年11月。</p>
         <p>培养方案：中央财经大学2026级市场营销（大数据营销），并参考北京理工大学2025级工商管理方案。</p>
         <p>预测依据：公开岗位薪资、全国本科就业率宏观锚点和可解释情景参数。</p>
+        <p>政策依据：教高〔2023〕1号、“十五五”就业与教育规划、扩大消费规划。</p>
+        <p>风险依据：6项正式风险矩阵，覆盖师资、学生适应、资源、数据、参数和技术迭代。</p>
         <p>限制：样本为目的性抽样，预测为情景推演，不是实证因果结论。</p>
         <button class="secondary-button" type="button" data-close-drawer>关闭</button>
       </div>
